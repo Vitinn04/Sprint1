@@ -10,34 +10,32 @@
 <body>
     <h1>Simulador Financeiro</h1>
     <h2>Projeção</h2>
-    Digite quantos kilos de morango em média você produz por safra: <input type="text" id="input_projecao">
-    <br>
-    <h2>Custos de Produção:</h2>
-    Digite o custo das mudas de morangos: <input type="text" id="input_mudas">
-    <br>
-    Digite o custo dos insumos agrícolas (Ex: fertilizantes): <input type="text" id="input_insumos">
-    <br>
-    Digite os custos de manutenção de equipamentos e infraestrutura (Ex: como estufas, sistemas de irrigação etc):
-    <input type="text" id="input_manutencao">
+    Digite quantos kilos de morango você produz por safra (KG): <input type="text" id="input_kilosSafra">
     <br>
     <h2>Despesas Operacionais:</h2>
     Digite os custos de energia e água: <input type="text" id="input_despesasOp">
     <br>
-    Digite o custo de internet: <input type="text" id="input_internet">
-    <br>
     <h2>Custos de Perdas:</h2>
-    Digite as perdas devido a variações de temperatura: <input type="text" id="input_perdas">
+    Digite as perdas devido a variações de temperatura e umidade (KG): <input type="text" id="input_perdas">
     <br>
     <h2>Receitas:</h2>
-    Digite o preço do kilo dos morangos: <input type="text" id="input_receita">
+    Digite o preço do kilo dos morangos: <input type="text" id="input_precoMorango">
     <br>
     <button onclick="calcular()">Calcular</button>
 
+  <div id="div_mensagem"></div>
 </body>
 
 </html>
 <script>
     function calcular() {
+        var kilosSafra = Number(input_kilosSafra.value);
+        var despesas = Number(input_despesasOp.value);
+        var perdas = Number(input_perdas.value);
+        var precoMorango = Number(input_precoMorango.value);
+        
+        var calcular = (kilosSafra * precoMorango) - despesas - perdas
 
+        div_mensagem.innerHTML = (`<br>O seu lucro liquido em relação as perdas e custos é de R$${calcular}`)   
     }
 </script>
